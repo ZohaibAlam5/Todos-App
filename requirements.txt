@@ -1,0 +1,6 @@
+# Console-Based Todo Application
+# No external dependencies required for core functionality - uses only Python standard library
+# Python 3.11+ required
+
+# For testing
+pytest>=7.0.0
