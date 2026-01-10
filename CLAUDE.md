@@ -212,6 +212,8 @@ See `.specify/memory/constitution.md` for code quality, testing, performance, se
 ## Active Technologies
 - Python 3.11 (based on constitution development stack requirement) + Built-in Python libraries for CLI interface, no external dependencies initially (001-console-todo-app)
 - In-memory only (no persistence beyond runtime as specified in requirements) (001-console-todo-app)
+- Python 3.11 (backend), TypeScript (frontend) + FastAPI, SQLModel, Next.js, Tailwind CSS, Better Auth (001-web-todo-app)
+- PostgreSQL database with Neon Serverless (001-web-todo-app)
 
 ## Recent Changes
 - 001-console-todo-app: Added Python 3.11 (based on constitution development stack requirement) + Built-in Python libraries for CLI interface, no external dependencies initially

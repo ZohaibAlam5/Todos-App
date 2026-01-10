@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/* 👇 THIS IS THE FIX FOR V4.
+   It forces the 'dark:' prefix to look for the '.dark' class 
+   instead of checking your computer's system theme.
+*/
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+}
+
+.dark {
+  --foreground-rgb: 255, 255, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  /* No background set here - layout.tsx handles it */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+}
+
+/* Smooth transitions */
+body, div, nav, header, footer, button, input {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-indigo-500/30 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-indigo-500/50;
+}
