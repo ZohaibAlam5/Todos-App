@@ -10,9 +10,9 @@ const nextConfig = {
   // Enable trailingSlash for consistent URLs
   trailingSlash: false,
 
-  // Optimize for Vercel deployment
+  // App router is enabled by default, no need to specify appDir
   experimental: {
-    appDir: false, // Use pages router
+    // appDir is true by default in Next.js 13+ with app directory
   },
 };
 

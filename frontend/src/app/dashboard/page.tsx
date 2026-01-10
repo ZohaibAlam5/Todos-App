@@ -69,7 +69,7 @@ export default function DashboardPage() {
   }
 
   // Show auth message if user is not authenticated
-  if (showAuthMessage) {
+  if (!user) {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex items-center justify-center p-4">
         <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 border border-gray-200 dark:border-gray-700">
@@ -88,11 +88,6 @@ export default function DashboardPage() {
         </div>
       </div>
     );
-  }
-
-  // Don't render anything if user is not authenticated and message is shown
-  if (!user && !showAuthMessage) {
-    return null;
   }
 
   return (

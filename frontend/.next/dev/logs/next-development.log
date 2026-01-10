@@ -1,20 +1,75 @@
-[00:00:01.476] Server  ERROR   (node:20416) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///D:/Coding/GeminiClaude/Todo/frontend/next.config.js is not specified and it doesn't parse as CommonJS.
-Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
-To eliminate this warning, add "type": "module" to D:\Coding\GeminiClaude\Todo\frontend\package.json.
-(Use `node --trace-warnings ...` to show where the warning was created)
-[00:00:01.907] Server  LOG     ✓ Ready in 1203ms
-[00:00:13.158] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:30.026] Browser LOG     Attempting login with email: ohaibalam@gmail.com
-[00:00:31.685] Browser LOG     Login response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYyOTl9.6sV6Uw_iI4MKh4_MrEd4AF4ZEmV1lJ5ZG5ED46Wb71Q","token_type":"bearer","user":{}}
-[00:00:31.685] Browser LOG     Token stored in localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYyOTl9.6sV6Uw_iI4MKh4_MrEd4AF4ZEmV1lJ5ZG5ED46Wb71Q
-[00:00:32.623] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYyOTl9.6sV6Uw_iI4MKh4_MrEd4AF4ZEmV1lJ5ZG5ED46Wb71Q
-[00:00:32.623] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYyOTl9.6sV6Uw_iI4MKh4_MrEd4AF4ZEmV1lJ5ZG5ED46Wb71Q
-[00:00:42.231] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYyOTl9.6sV6Uw_iI4MKh4_MrEd4AF4ZEmV1lJ5ZG5ED46Wb71Q
-[00:00:57.400] Browser LOG     Attempting login with email: ohaibalam@gmail.com
-[00:00:58.723] Browser LOG     Login response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYzMjZ9.SgE0UbLJHcz0ID3nBaT91r1xILcYxtNSS4MRaqhG5uA","token_type":"bearer","user":{}}
-[00:00:58.724] Browser LOG     Token stored in localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYzMjZ9.SgE0UbLJHcz0ID3nBaT91r1xILcYxtNSS4MRaqhG5uA
-[00:00:59.594] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYzMjZ9.SgE0UbLJHcz0ID3nBaT91r1xILcYxtNSS4MRaqhG5uA
-[00:00:59.594] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYzMjZ9.SgE0UbLJHcz0ID3nBaT91r1xILcYxtNSS4MRaqhG5uA
-[00:01:04.671] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYzMjZ9.SgE0UbLJHcz0ID3nBaT91r1xILcYxtNSS4MRaqhG5uA
-[00:01:07.834] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYzMjZ9.SgE0UbLJHcz0ID3nBaT91r1xILcYxtNSS4MRaqhG5uA
-[00:01:10.321] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYzMjZ9.SgE0UbLJHcz0ID3nBaT91r1xILcYxtNSS4MRaqhG5uA
+[00:00:02.017] Server  LOG     ✓ Ready in 1438ms
+[00:00:02.939] Server  ERROR   ⨯ ./src/app/globals.css
+Error evaluating Node.js code
+Error: Failed to load external module file:///D:/Coding/GeminiClaude/Todo/frontend/postcss.config.js: ReferenceError: module is not defined in ES module scope
+This file is being treated as an ES module because it has a '.js' file extension and 'D:\Coding\GeminiClaude\Todo\frontend\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    [at Context.externalImport (turbopack:///[turbopack]/shared-node/base-externals-utils.ts:16:11)]
+    [at process.processTicksAndRejections (node:internal/process/task_queues:103:5)]
+    [at async <anonymous> (turbopack:///[project]/postcss.config.js_.loader.mjs:9:13)]
+
+Import trace:
+  Client Component Browser:
+    ./src/app/globals.css [Client Component Browser]
+    ./src/app/layout.tsx [Server Component]
+
+
+[00:00:02.943] Server  WARN    ⚠ ./postcss.config.js
+Specified module format (EcmaScript Modules) is not matching the module format of the source code (CommonJs)
+The EcmaScript module format was specified in the package.json that is affecting this source file or by using an special extension, but it looks like that CommonJs syntax is used in the source code.
+Exports made by CommonJs syntax will lead to a runtime error, since the module is in EcmaScript mode. Either change the "type" field in the package.json or replace CommonJs syntax with EcmaScript import/export syntax in the source file.
+
+
+[00:00:05.462] Server  WARN    ⚠ ./postcss.config.js
+Specified module format (EcmaScript Modules) is not matching the module format of the source code (CommonJs)
+The EcmaScript module format was specified in the package.json that is affecting this source file or by using an special extension, but it looks like that CommonJs syntax is used in the source code.
+Exports made by CommonJs syntax will lead to a runtime error, since the module is in EcmaScript mode. Either change the "type" field in the package.json or replace CommonJs syntax with EcmaScript import/export syntax in the source file.
+
+
+[00:00:05.507] Browser ERROR   uncaughtError: Error: ./src/app/globals.css
+Error evaluating Node.js code
+Error: Failed to load external module file:///D:/Coding/GeminiClaude/Todo/frontend/postcss.config.js: ReferenceError: module is not defined in ES module scope
+This file is being treated as an ES module because it has a '.js' file extension and 'D:\Coding\GeminiClaude\Todo\frontend\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    [at Context.externalImport (turbopack:///[turbopack]/shared-node/base-externals-utils.ts:16:11)]
+    [at process.processTicksAndRejections (node:internal/process/task_queues:103:5)]
+    [at async <anonymous> (turbopack:///[project]/postcss.config.js_.loader.mjs:9:13)]
+
+Import trace:
+  Client Component Browser:
+    ./src/app/globals.css [Client Component Browser]
+    ./src/app/layout.tsx [Server Component]
+
+
+[00:00:05.737] Browser ERROR   ./src/app/globals.css
+Error evaluating Node.js code
+Error: Failed to load external module file:///D:/Coding/GeminiClaude/Todo/frontend/postcss.config.js: ReferenceError: module is not defined in ES module scope
+This file is being treated as an ES module because it has a '.js' file extension and 'D:\Coding\GeminiClaude\Todo\frontend\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    [at Context.externalImport (turbopack:///[turbopack]/shared-node/base-externals-utils.ts:16:11)]
+    [at process.processTicksAndRejections (node:internal/process/task_queues:103:5)]
+    [at async <anonymous> (turbopack:///[project]/postcss.config.js_.loader.mjs:9:13)]
+
+Import trace:
+  Client Component Browser:
+    ./src/app/globals.css [Client Component Browser]
+    ./src/app/layout.tsx [Server Component]
+[00:00:06.553] Browser ERROR   ./src/app/globals.css
+Error evaluating Node.js code
+Error: Failed to load external module file:///D:/Coding/GeminiClaude/Todo/frontend/postcss.config.js: ReferenceError: module is not defined in ES module scope
+This file is being treated as an ES module because it has a '.js' file extension and 'D:\Coding\GeminiClaude\Todo\frontend\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    [at Context.externalImport (turbopack:///[turbopack]/shared-node/base-externals-utils.ts:16:11)]
+    [at process.processTicksAndRejections (node:internal/process/task_queues:103:5)]
+    [at async <anonymous> (turbopack:///[project]/postcss.config.js_.loader.mjs:9:13)]
+
+Import trace:
+  Client Component Browser:
+    ./src/app/globals.css [Client Component Browser]
+    ./src/app/layout.tsx [Server Component]
+[00:00:20.627] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:42.032] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:52.014] Browser LOG     Attempting login with email: ohaibalam@gmail.com
+[00:01:54.952] Browser ERROR   Login error: {}
+[00:01:54.952] Browser ERROR   Caught error: {}
+[00:01:58.681] Browser LOG     Attempting login with email: ohaibalam@gmail.com
+[00:01:59.955] Browser LOG     Login response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNjU1NTJ9.jmUyDccK_nJaYeGXdgxGQqL2CO-BNn46IVpZT_kmpAE","token_type":"bearer","user":{}}
+[00:01:59.955] Browser LOG     Token stored in localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNjU1NTJ9.jmUyDccK_nJaYeGXdgxGQqL2CO-BNn46IVpZT_kmpAE
+[00:02:00.913] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNjU1NTJ9.jmUyDccK_nJaYeGXdgxGQqL2CO-BNn46IVpZT_kmpAE
+[00:02:00.913] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNjU1NTJ9.jmUyDccK_nJaYeGXdgxGQqL2CO-BNn46IVpZT_kmpAE

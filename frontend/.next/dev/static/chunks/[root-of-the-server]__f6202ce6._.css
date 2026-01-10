@@ -583,6 +583,10 @@
     position: relative;
   }
 
+  .static {
+    position: static;
+  }
+
   .-inset-7\.5 {
     inset: calc(var(--spacing) * -7.5);
   }
