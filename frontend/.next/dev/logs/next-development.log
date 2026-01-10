@@ -1,35 +1,20 @@
-[00:00:01.662] Server  ERROR   (node:1796) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///D:/Coding/GeminiClaude/Todo/frontend/next.config.js is not specified and it doesn't parse as CommonJS.
+[00:00:01.476] Server  ERROR   (node:20416) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///D:/Coding/GeminiClaude/Todo/frontend/next.config.js is not specified and it doesn't parse as CommonJS.
 Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
 To eliminate this warning, add "type": "module" to D:\Coding\GeminiClaude\Todo\frontend\package.json.
 (Use `node --trace-warnings ...` to show where the warning was created)
-[00:00:02.608] Server  LOG     ✓ Ready in 1865ms
-[00:00:06.804] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:03:10.685] Browser LOG     Attempting login with email: ohaibalam@gmail.com
-[00:03:12.168] Browser ERROR   Login error: {}
-[00:03:12.168] Browser ERROR   Caught error: {}
-[00:03:15.463] Browser LOG     Attempting login with email: ohaibalam@gmail.com
-[00:03:16.561] Browser ERROR   Login error: {}
-[00:03:16.561] Browser ERROR   Caught error: {}
-[00:03:25.320] Browser LOG     Attempting login with email: ohaibalam@gmail.com
-[00:03:26.401] Browser ERROR   Login error: {}
-[00:03:26.401] Browser ERROR   Caught error: {}
-[00:04:33.817] Browser LOG     Attempting login with email: ohaibalam@gmail.com
-[00:04:35.118] Browser LOG     Login response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlNTlmNDUzZS03YjcwLTQ1ZmUtOGI2OC05MDA5ZmQxYmNkZmMiLCJleHAiOjE3NjgwMjM5Nzl9.zl_5hwQxkazKQeuan2NfbYVBgk9npMmcln-2EGIdoTs","token_type":"bearer","user":{}}
-[00:04:35.118] Browser LOG     Token stored in localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlNTlmNDUzZS03YjcwLTQ1ZmUtOGI2OC05MDA5ZmQxYmNkZmMiLCJleHAiOjE3NjgwMjM5Nzl9.zl_5hwQxkazKQeuan2NfbYVBgk9npMmcln-2EGIdoTs
-[00:04:36.133] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlNTlmNDUzZS03YjcwLTQ1ZmUtOGI2OC05MDA5ZmQxYmNkZmMiLCJleHAiOjE3NjgwMjM5Nzl9.zl_5hwQxkazKQeuan2NfbYVBgk9npMmcln-2EGIdoTs
-[00:04:36.133] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlNTlmNDUzZS03YjcwLTQ1ZmUtOGI2OC05MDA5ZmQxYmNkZmMiLCJleHAiOjE3NjgwMjM5Nzl9.zl_5hwQxkazKQeuan2NfbYVBgk9npMmcln-2EGIdoTs
-[00:05:51.217] Browser LOG     Attempting login with email: ohaibalam@gmail.com
-[00:05:52.798] Browser LOG     Login response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlNTlmNDUzZS03YjcwLTQ1ZmUtOGI2OC05MDA5ZmQxYmNkZmMiLCJleHAiOjE3NjgwMjQwNTd9.56MpzmVdcxP0brYrgero3mmCrcr4zS6-o2muMLcLx5w","token_type":"bearer","user":{}}
-[00:05:52.799] Browser LOG     Token stored in localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlNTlmNDUzZS03YjcwLTQ1ZmUtOGI2OC05MDA5ZmQxYmNkZmMiLCJleHAiOjE3NjgwMjQwNTd9.56MpzmVdcxP0brYrgero3mmCrcr4zS6-o2muMLcLx5w
-[00:05:53.659] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlNTlmNDUzZS03YjcwLTQ1ZmUtOGI2OC05MDA5ZmQxYmNkZmMiLCJleHAiOjE3NjgwMjQwNTd9.56MpzmVdcxP0brYrgero3mmCrcr4zS6-o2muMLcLx5w
-[00:05:53.659] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlNTlmNDUzZS03YjcwLTQ1ZmUtOGI2OC05MDA5ZmQxYmNkZmMiLCJleHAiOjE3NjgwMjQwNTd9.56MpzmVdcxP0brYrgero3mmCrcr4zS6-o2muMLcLx5w
-[00:20:28.052] Server  LOG     ✓ Compiled in 1076ms
-[00:20:40.649] Server  LOG     ✓ Compiled in 94ms
-[00:20:42.788] Server  LOG     ✓ Compiled in 78ms
-[00:20:54.988] Server  LOG     ✓ Compiled in 72ms
-[00:20:56.311] Server  LOG     ✓ Compiled in 63ms
-[00:20:57.929] Server  LOG     ✓ Compiled in 71ms
-[00:21:23.383] Server  LOG     ✓ Compiled in 89ms
-[00:21:25.333] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:59:54.794] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[01:09:07.517] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:01.907] Server  LOG     ✓ Ready in 1203ms
+[00:00:13.158] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:30.026] Browser LOG     Attempting login with email: ohaibalam@gmail.com
+[00:00:31.685] Browser LOG     Login response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYyOTl9.6sV6Uw_iI4MKh4_MrEd4AF4ZEmV1lJ5ZG5ED46Wb71Q","token_type":"bearer","user":{}}
+[00:00:31.685] Browser LOG     Token stored in localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYyOTl9.6sV6Uw_iI4MKh4_MrEd4AF4ZEmV1lJ5ZG5ED46Wb71Q
+[00:00:32.623] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYyOTl9.6sV6Uw_iI4MKh4_MrEd4AF4ZEmV1lJ5ZG5ED46Wb71Q
+[00:00:32.623] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYyOTl9.6sV6Uw_iI4MKh4_MrEd4AF4ZEmV1lJ5ZG5ED46Wb71Q
+[00:00:42.231] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYyOTl9.6sV6Uw_iI4MKh4_MrEd4AF4ZEmV1lJ5ZG5ED46Wb71Q
+[00:00:57.400] Browser LOG     Attempting login with email: ohaibalam@gmail.com
+[00:00:58.723] Browser LOG     Login response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYzMjZ9.SgE0UbLJHcz0ID3nBaT91r1xILcYxtNSS4MRaqhG5uA","token_type":"bearer","user":{}}
+[00:00:58.724] Browser LOG     Token stored in localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYzMjZ9.SgE0UbLJHcz0ID3nBaT91r1xILcYxtNSS4MRaqhG5uA
+[00:00:59.594] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYzMjZ9.SgE0UbLJHcz0ID3nBaT91r1xILcYxtNSS4MRaqhG5uA
+[00:00:59.594] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYzMjZ9.SgE0UbLJHcz0ID3nBaT91r1xILcYxtNSS4MRaqhG5uA
+[00:01:04.671] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYzMjZ9.SgE0UbLJHcz0ID3nBaT91r1xILcYxtNSS4MRaqhG5uA
+[00:01:07.834] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYzMjZ9.SgE0UbLJHcz0ID3nBaT91r1xILcYxtNSS4MRaqhG5uA
+[00:01:10.321] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjZGFlYTIzOC1hMThhLTQ0NzYtYjI2Ni1jMmNiZTk1NGJlMTgiLCJleHAiOjE3NjgwNTYzMjZ9.SgE0UbLJHcz0ID3nBaT91r1xILcYxtNSS4MRaqhG5uA

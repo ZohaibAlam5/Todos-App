@@ -46,6 +46,7 @@ class AuthService {
       },
       body: JSON.stringify({
         email: email,
+        username: email,
         password: password
       }),
     });
