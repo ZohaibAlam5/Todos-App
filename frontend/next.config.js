@@ -1,9 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',  
+  // Remove static export for Vercel deployment
+  // output: 'export',
 
   images: {
     unoptimized: true,
+  },
+
+  // Enable trailingSlash for consistent URLs
+  trailingSlash: false,
+
+  // Optimize for Vercel deployment
+  experimental: {
+    appDir: false, // Use pages router
   },
 };
 
