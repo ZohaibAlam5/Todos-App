@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 from typing import AsyncIterator
 from fastapi.middleware.cors import CORSMiddleware
 import asyncio
+import os
 
 from src.api.auth_routes import router as auth_router
 from src.api.tasks_routes import router as tasks_router
@@ -62,4 +63,4 @@ def health_check():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("src.main:app", host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
+    uvicorn.run("src.main:app", host="0.0.0.0", port=int(os.environ.get("PORT", 7860)))
