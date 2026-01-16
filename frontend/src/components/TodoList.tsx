@@ -10,16 +10,17 @@ import {
   CheckCircle, Circle, Trash2, Edit2, X, Tag, AlertCircle, Loader2, ChevronDown, Sparkles, Check
 } from 'lucide-react';
 
-// --- 1. BALANCED CUSTOM DROPDOWN ---
+// --- 1. ANIMATED CUSTOM DROPDOWN ---
 interface CustomDropdownProps {
   value: string;
   onChange: (value: string) => void;
   options: { value: string; label: string }[];
   icon?: React.ElementType;
   className?: string;
+  buttonClassName?: string;
 }
 
-const CustomDropdown: React.FC<CustomDropdownProps> = ({ value, onChange, options, icon: Icon, className }) => {
+const CustomDropdown: React.FC<CustomDropdownProps> = ({ value, onChange, options, icon: Icon, className, buttonClassName }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -38,44 +39,51 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({ value, onChange, option
   return (
     <div className={`relative ${className}`} ref={dropdownRef}>
       <button
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
-        // UPDATED: py-3 and min-w-[140px] for comfortable clicking
-        className="w-full sm:w-auto min-w-35 flex items-center justify-between gap-3 px-4 py-3 
+        className={`w-full flex items-center justify-between gap-3 px-4 py-3 
         bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
         rounded-xl text-sm md:text-base text-gray-700 dark:text-gray-200 font-medium 
-        hover:border-indigo-500 dark:hover:border-indigo-500 transition-all shadow-sm group whitespace-nowrap"
+        hover:border-indigo-500 dark:hover:border-indigo-500 transition-all shadow-sm group whitespace-nowrap
+        ${buttonClassName || ''}
+        `}
       >
-        <div className="flex items-center gap-2 flex-1 justify-center">
-             {Icon && <Icon className="w-4 h-4 text-gray-400 group-hover:text-indigo-500 transition-colors" />}
+        <div className="flex items-center gap-2 flex-1 overflow-hidden">
+             {Icon && <Icon className="w-4 h-4 text-gray-400 group-hover:text-indigo-500 transition-colors shrink-0" />}
              <span className="truncate">{selectedLabel}</span>
         </div>
-        <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown 
+          className={`w-4 h-4 text-gray-400 transition-transform duration-300 ease-out ${isOpen ? 'rotate-180' : 'rotate-0'}`} 
+        />
       </button>
 
+      {/* Animated Dropdown Menu */}
       {isOpen && (
         <div className="absolute top-full left-0 right-0 mt-2 z-50 
           bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl 
           border border-gray-100 dark:border-gray-700 
-          rounded-xl shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 origin-top"
+          rounded-xl shadow-2xl overflow-hidden 
+          origin-top animate-dropdown-open"
+          style={{ animation: 'dropdown-open 0.2s ease-out forwards' }}
         >
-          <div className="py-1 max-h-60 overflow-y-auto">
+          <div className="py-1 max-h-60 overflow-y-auto custom-scrollbar">
             {options.map((option) => (
               <button
+                type="button"
                 key={option.value}
                 onClick={() => {
                   onChange(option.value);
                   setIsOpen(false);
                 }}
-                // UPDATED: py-2.5 for better spacing in list
-                className={`w-full flex items-center justify-center relative px-4 py-2.5 text-sm transition-colors
+                className={`w-full flex items-center justify-start relative px-4 py-3 text-sm transition-all duration-200
                   ${option.value === value 
-                    ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 font-semibold' 
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
+                    ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 font-semibold pl-6' 
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:pl-6'
                   }`}
               >
                 {option.label}
                 {option.value === value && (
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2">
+                  <span className="absolute right-4 top-1/2 -translate-y-1/2">
                     <Check className="w-4 h-4" />
                   </span>
                 )}
@@ -118,6 +126,7 @@ const TodoList: React.FC<TodoListProps> = ({ onTaskUpdated }) => {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   
   const [showAddForm, setShowAddForm] = useState(false);
+  const [isFormClosing, setIsFormClosing] = useState(false);
   
   const [isProcessing, setIsProcessing] = useState(false); 
   const [deleteModal, setDeleteModal] = useState<{isOpen: boolean, taskId: number | null}>({
@@ -154,6 +163,17 @@ const TodoList: React.FC<TodoListProps> = ({ onTaskUpdated }) => {
     }
   };
 
+  // --- HELPER: Close form smoothly ---
+  const handleCloseForm = () => {
+    setIsFormClosing(true);
+    // Wait for animation to finish (500ms) before removing from DOM
+    setTimeout(() => {
+        setShowAddForm(false);
+        setEditingTask(null);
+        setIsFormClosing(false);
+    }, 500); 
+  };
+
   const handleCreateTask = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newTaskTitle.trim()) return;
@@ -165,7 +185,9 @@ const TodoList: React.FC<TodoListProps> = ({ onTaskUpdated }) => {
       });
       if (response.success && response.data) {
         setTasks([response.data, ...tasks]);
-        setNewTaskTitle(''); setNewTaskDescription(''); setNewTaskPriority('Medium'); setNewTaskTags(''); setShowAddForm(false); setError(null);
+        setNewTaskTitle(''); setNewTaskDescription(''); setNewTaskPriority('Medium'); setNewTaskTags(''); 
+        handleCloseForm();
+        setError(null);
       } else setError(response.error || 'Failed to create task');
     } catch (err) { setError(err instanceof Error ? err.message : 'An error occurred'); } finally { setIsProcessing(false); }
   };
@@ -181,7 +203,8 @@ const TodoList: React.FC<TodoListProps> = ({ onTaskUpdated }) => {
       });
       if (response.success && response.data) {
         setTasks(tasks.map(task => task.id === editingTask.id ? response.data! : task));
-        setEditingTask(null); setError(null);
+        handleCloseForm();
+        setError(null);
       } else setError(response.error || 'Failed to update task');
     } catch (err) { setError(err instanceof Error ? err.message : 'An error occurred'); } finally { setIsProcessing(false); }
   };
@@ -209,7 +232,17 @@ const TodoList: React.FC<TodoListProps> = ({ onTaskUpdated }) => {
   };
 
   const startEditing = (task: Task) => {
-    setEditingTask(task); setEditTitle(task.title); setEditDescription(task.description || ''); setEditPriority(task.priority); setEditTags(task.tags.join(', ')); setShowAddForm(false);
+    if (showAddForm || editingTask) {
+        // Instant switch if already open
+    } else {
+        // Animation triggers on mount
+    }
+    setEditingTask(task); 
+    setEditTitle(task.title); 
+    setEditDescription(task.description || ''); 
+    setEditPriority(task.priority); 
+    setEditTags(task.tags.join(', ')); 
+    setShowAddForm(false); 
   };
 
   const filteredTasks = tasks.filter(task => {
@@ -231,12 +264,62 @@ const TodoList: React.FC<TodoListProps> = ({ onTaskUpdated }) => {
 
   if (loading && tasks.length === 0) return (<div className="flex justify-center items-center h-64"><Loader2 className="animate-spin h-10 w-10 text-indigo-500" /></div>);
 
-  // UPDATED: Increased py to 3 and restored text-base for comfortable typing
   const InputClasses = "w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors text-base";
 
   return (
     <div className="w-full relative">
       
+      {/* --- CSS ANIMATIONS --- */}
+      <style jsx global>{`
+        @keyframes form-enter {
+          from { 
+            opacity: 0; 
+            transform: translateY(-20px) scale(0.98); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateY(0) scale(1); 
+          }
+        }
+        
+        /* UPDATED: Collapse height, margin, padding, and border to 0 */
+        @keyframes form-exit {
+          0% { 
+            opacity: 1; 
+            transform: translateY(0) scale(1);
+            max-height: 800px;
+            margin-bottom: 2rem;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-width: 1px;
+          }
+          100% { 
+            opacity: 0; 
+            transform: translateY(-20px) scale(0.98); 
+            max-height: 0;
+            margin-bottom: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            border-width: 0;
+          }
+        }
+
+        @keyframes dropdown-open {
+          from { opacity: 0; transform: scaleY(0.95); }
+          to { opacity: 1; transform: scaleY(1); }
+        }
+        
+        .animate-form-enter {
+          animation: form-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .animate-form-exit {
+          animation: form-exit 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .animate-dropdown-open {
+          animation: dropdown-open 0.2s ease-out forwards;
+        }
+      `}</style>
+
       {/* --- POPUPS --- */}
       {mounted && isProcessing && createPortal(
          <div className="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-gray-50/50 dark:bg-gray-950/50 backdrop-blur-sm transition-all duration-300">
@@ -280,7 +363,7 @@ const TodoList: React.FC<TodoListProps> = ({ onTaskUpdated }) => {
         </div>
       )}
 
-      {/* --- BALANCED CONTROLS BAR --- */}
+      {/* --- CONTROLS BAR --- */}
       <div className="mb-8 p-6 bg-white/50 dark:bg-gray-800/40 backdrop-blur-md border border-white/50 dark:border-gray-700/50 rounded-2xl shadow-sm">
         
         <div className="flex flex-col lg:flex-row gap-5 items-start lg:items-center">
@@ -288,11 +371,14 @@ const TodoList: React.FC<TodoListProps> = ({ onTaskUpdated }) => {
           {/* Group 1: Add Button & Search */}
           <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto lg:flex-1">
             
-            {/* New Task Button - UPDATED SIZE */}
             <button
               onClick={() => {
-                setShowAddForm(!showAddForm);
-                setEditingTask(null);
+                if (showAddForm) {
+                    handleCloseForm();
+                } else {
+                    setShowAddForm(true);
+                    setEditingTask(null);
+                }
               }}
               className={`group flex items-center justify-center gap-2 px-5 py-3 font-bold rounded-xl transition-all shadow-md shrink-0 text-sm md:text-base
                 ${showAddForm 
@@ -303,7 +389,6 @@ const TodoList: React.FC<TodoListProps> = ({ onTaskUpdated }) => {
               <span className="whitespace-nowrap">{showAddForm ? 'Cancel' : 'New Task'}</span>
             </button>
 
-            {/* Search Bar - UPDATED SIZE */}
             <div className="relative w-full flex-1">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
@@ -311,7 +396,6 @@ const TodoList: React.FC<TodoListProps> = ({ onTaskUpdated }) => {
                 placeholder="Search tasks..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                // Increased py to 3 for better comfort
                 className="w-full pl-11 pr-4 py-3 text-base bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm transition-all"
               />
             </div>
@@ -328,7 +412,7 @@ const TodoList: React.FC<TodoListProps> = ({ onTaskUpdated }) => {
                   { value: 'active', label: 'Active' },
                   { value: 'completed', label: 'Completed' },
                 ]}
-                className="flex-1 sm:flex-none"
+                className="flex-1 sm:flex-none sm:w-auto min-w-35"
              />
 
              <CustomDropdown 
@@ -340,7 +424,7 @@ const TodoList: React.FC<TodoListProps> = ({ onTaskUpdated }) => {
                   { value: 'Medium', label: 'Medium' },
                   { value: 'Low', label: 'Low' },
                 ]}
-                className="flex-1 sm:flex-none"
+                className="flex-1 sm:flex-none sm:w-auto min-w-35"
              />
 
              <div className="h-12 w-px bg-gray-300 dark:bg-gray-700 mx-1 hidden lg:block"></div>
@@ -358,22 +442,28 @@ const TodoList: React.FC<TodoListProps> = ({ onTaskUpdated }) => {
                   { value: 'priority-desc', label: 'Priority (High)' },
                   { value: 'title-asc', label: 'Title (A-Z)' },
                 ]}
-                className="flex-1 sm:flex-none w-full sm:w-auto"
+                className="flex-1 sm:flex-none w-full sm:w-auto min-w-40"
              />
           </div>
         </div>
       </div>
 
-      {/* --- CREATE / EDIT FORM (Balanced Size) --- */}
-      {(showAddForm || editingTask) && (
-        // UPDATED: p-6 md:p-8 for spacious feel
-        <div className="mb-8 p-6 md:p-8 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl animate-in fade-in slide-in-from-top-4 duration-300">
+      {/* --- CREATE / EDIT FORM (ANIMATED) --- */}
+      {/* We check showAddForm OR editingTask OR isFormClosing to keep it in DOM during exit animation */}
+      {(showAddForm || editingTask || isFormClosing) && (
+        <div 
+          className={`
+            p-6 md:p-8 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl 
+            ${isFormClosing ? 'animate-form-exit overflow-hidden' : 'animate-form-enter mb-8'}
+          `}
+        >
+          
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
               {editingTask ? <Edit2 className="w-5 h-5 text-indigo-500" /> : <Plus className="w-5 h-5 text-indigo-500" />}
               {editingTask ? 'Edit Task' : 'Create New Task'}
             </h3>
-            <button onClick={() => { setShowAddForm(false); setEditingTask(null); }} className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+            <button onClick={handleCloseForm} className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
               <X className="w-6 h-6" />
             </button>
           </div>
@@ -383,25 +473,36 @@ const TodoList: React.FC<TodoListProps> = ({ onTaskUpdated }) => {
               <div>
                 <input type="text" placeholder="Task Title" value={editingTask ? editTitle : newTaskTitle} onChange={(e) => editingTask ? setEditTitle(e.target.value) : setNewTaskTitle(e.target.value)} className={InputClasses} required />
               </div>
+              
               <div>
                 <textarea placeholder="Description (Optional)" value={editingTask ? editDescription : newTaskDescription} onChange={(e) => editingTask ? setEditDescription(e.target.value) : setNewTaskDescription(e.target.value)} className={InputClasses} rows={3} />
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div>
-                   <label className="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">Priority</label>
-                   <select value={editingTask ? editPriority : newTaskPriority} onChange={(e) => editingTask ? setEditPriority(e.target.value as any) : setNewTaskPriority(e.target.value as any)} className={InputClasses}>
-                     <option value="High">High Priority</option>
-                     <option value="Medium">Medium Priority</option>
-                     <option value="Low">Low Priority</option>
-                   </select>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 relative">
+                {/* Priority Dropdown */}
+                <div className="flex flex-col gap-1.5 relative z-20">
+                   <label className="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Priority</label>
+                   <CustomDropdown 
+                     value={editingTask ? editPriority : newTaskPriority} 
+                     onChange={(val) => editingTask ? setEditPriority(val as any) : setNewTaskPriority(val as any)} 
+                     options={[
+                       { value: 'High', label: 'High Priority' },
+                       { value: 'Medium', label: 'Medium Priority' },
+                       { value: 'Low', label: 'Low Priority' }
+                     ]}
+                     className="w-full"
+                     buttonClassName="bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 py-3"
+                   />
                 </div>
-                <div>
-                  <label className="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wider">Tags</label>
+
+                <div className="flex flex-col gap-1.5 relative z-10">
+                  <label className="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Tags</label>
                   <input type="text" placeholder="Comma separated (e.g. Work, Urgent)" value={editingTask ? editTags : newTaskTags} onChange={(e) => editingTask ? setEditTags(e.target.value) : setNewTaskTags(e.target.value)} className={InputClasses} />
                 </div>
               </div>
+
               <div className="pt-4 flex gap-3 justify-end">
-                <button type="button" onClick={() => { setShowAddForm(false); setEditingTask(null); }} className="px-5 py-3 rounded-xl font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Cancel</button>
+                <button type="button" onClick={handleCloseForm} className="px-5 py-3 rounded-xl font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Cancel</button>
                 <button type="submit" className="px-8 py-3 bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold rounded-xl shadow-lg shadow-indigo-500/30 transition-all hover:scale-[1.02]">{editingTask ? 'Save Changes' : 'Create Task'}</button>
               </div>
             </div>
@@ -421,7 +522,6 @@ const TodoList: React.FC<TodoListProps> = ({ onTaskUpdated }) => {
           </div>
         ) : (
           filteredTasks.map(task => (
-            // UPDATED: p-5 for balanced look
             <div key={task.id} className={`group flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 rounded-2xl transition-all duration-300 border ${task.completed ? 'bg-gray-50/80 dark:bg-gray-900/40 border-gray-200 dark:border-gray-800' : 'bg-white dark:bg-gray-800/40 border-white/50 dark:border-gray-700/50 hover:shadow-lg hover:border-indigo-300 dark:hover:border-indigo-500/50'}`}>
               <div className="flex items-start gap-4 flex-1 w-full">
                 <button onClick={() => handleToggleCompletion(task.id)} className={`mt-1 shrink-0 transition-colors duration-300 ${task.completed ? 'text-green-500' : 'text-gray-300 dark:text-gray-500 hover:text-indigo-500'}`}>

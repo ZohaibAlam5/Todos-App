@@ -3,6 +3,8 @@ from typing import Generator
 from src.models.user import User
 from src.models.task import Task
 from src.models.password_reset import PasswordResetToken
+from src.models.conversation import Conversation
+from src.models.message import Message
 
 import os
 from dotenv import load_dotenv

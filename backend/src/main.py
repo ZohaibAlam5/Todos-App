@@ -7,6 +7,7 @@ import os
 
 from src.api.auth_routes import router as auth_router
 from src.api.tasks_routes import router as tasks_router
+from src.api.chat_routes import router as chat_router
 from src.database.database import create_db_and_tables
 
 @asynccontextmanager
@@ -52,6 +53,8 @@ app.add_middleware(
 app.include_router(auth_router)
 # Include tasks routes
 app.include_router(tasks_router)
+# Include chat routes (AI chatbot)
+app.include_router(chat_router)
 
 @app.get("/")
 def read_root():

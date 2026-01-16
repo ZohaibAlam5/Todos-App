@@ -1,4 +1,29 @@
-[00:00:01.705] Server  LOG     ✓ Ready in 1148ms
-[00:00:05.212] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:02.108] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:09.927] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:01.689] Server  LOG     ✓ Ready in 1121ms
+[00:00:03.677] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:11.624] Browser LOG     Attempting login with email: ohaibalam@gmail.com
+[00:00:13.000] Browser LOG     Login response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTQzNjV9.Z8-7-KVBg2k-I7ycPZKbN7uX31HFXZxdjE7a8DL3C3o","token_type":"bearer","user":{}}
+[00:00:13.000] Browser LOG     Token stored in localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTQzNjV9.Z8-7-KVBg2k-I7ycPZKbN7uX31HFXZxdjE7a8DL3C3o
+[00:00:13.788] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTQzNjV9.Z8-7-KVBg2k-I7ycPZKbN7uX31HFXZxdjE7a8DL3C3o
+[00:00:13.788] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTQzNjV9.Z8-7-KVBg2k-I7ycPZKbN7uX31HFXZxdjE7a8DL3C3o
+[00:05:23.045] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:24.257] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTQzNjV9.Z8-7-KVBg2k-I7ycPZKbN7uX31HFXZxdjE7a8DL3C3o
+[00:05:24.257] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTQzNjV9.Z8-7-KVBg2k-I7ycPZKbN7uX31HFXZxdjE7a8DL3C3o
+[00:11:36.098] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:45.972] Browser LOG     Attempting login with email: ohaibalam@gmail.com
+[00:11:47.662] Browser LOG     Login response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTUwNjB9.3GWBDJoHwWpkkLmIbJA8nv4rvazCuCHGe4qQEp-s-g4","token_type":"bearer","user":{}}
+[00:11:47.662] Browser LOG     Token stored in localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTUwNjB9.3GWBDJoHwWpkkLmIbJA8nv4rvazCuCHGe4qQEp-s-g4
+[00:11:48.933] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTUwNjB9.3GWBDJoHwWpkkLmIbJA8nv4rvazCuCHGe4qQEp-s-g4
+[00:11:48.933] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTUwNjB9.3GWBDJoHwWpkkLmIbJA8nv4rvazCuCHGe4qQEp-s-g4
+[00:12:10.333] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTUwNjB9.3GWBDJoHwWpkkLmIbJA8nv4rvazCuCHGe4qQEp-s-g4
+[00:13:30.843] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:13:31.586] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTUwNjB9.3GWBDJoHwWpkkLmIbJA8nv4rvazCuCHGe4qQEp-s-g4
+[00:13:31.586] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTUwNjB9.3GWBDJoHwWpkkLmIbJA8nv4rvazCuCHGe4qQEp-s-g4
+[00:13:43.533] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:13:44.277] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTUwNjB9.3GWBDJoHwWpkkLmIbJA8nv4rvazCuCHGe4qQEp-s-g4
+[00:13:44.277] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTUwNjB9.3GWBDJoHwWpkkLmIbJA8nv4rvazCuCHGe4qQEp-s-g4
+[00:13:57.694] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:14:09.230] Browser LOG     Attempting login with email: ohaibalam@gmail.com
+[00:14:10.882] Browser LOG     Login response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTUyMDN9.je8FWlexhv4MboMToLwYWQnptgqkGo5T138EmGKmfAo","token_type":"bearer","user":{}}
+[00:14:10.882] Browser LOG     Token stored in localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTUyMDN9.je8FWlexhv4MboMToLwYWQnptgqkGo5T138EmGKmfAo
+[00:14:11.602] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTUyMDN9.je8FWlexhv4MboMToLwYWQnptgqkGo5T138EmGKmfAo
+[00:14:11.602] Browser LOG     Token retrieved from localStorage: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGYwMjQyOS01MjYyLTRiZmMtYjJiMS02ZDgyYzM2Yzk2OTQiLCJleHAiOjE3Njg1OTUyMDN9.je8FWlexhv4MboMToLwYWQnptgqkGo5T138EmGKmfAo

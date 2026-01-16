@@ -21,7 +21,7 @@ def get_tasks(
     # Convert tasks to TaskRead format
     result = []
     for task in tasks:
-        task_dict = task.dict()
+        task_dict = task.model_dump()
         # Convert the tags string to a list for the response
         task_dict["tags"] = task.tags_list
         # Priority is already a string
@@ -92,7 +92,7 @@ def create_task(
         print("Task refreshed from DB")  # Debug log
 
         # Convert to TaskRead format for response
-        task_dict = db_task.dict()
+        task_dict = db_task.model_dump()
         task_dict["tags"] = db_task.tags_list
         # Priority is already a string
         task_dict["priority"] = db_task.priority
@@ -122,7 +122,7 @@ def get_task(
         )
 
     # Convert to TaskRead format for response
-    task_dict = db_task.dict()
+    task_dict = db_task.model_dump()
     task_dict["tags"] = db_task.tags_list
     # Priority is already a string
     task_dict["priority"] = db_task.priority
@@ -146,7 +146,7 @@ def update_task(
         )
 
     # Update task with provided values
-    update_data = task_update.dict(exclude_unset=True)
+    update_data = task_update.model_dump(exclude_unset=True)
     for field, value in update_data.items():
         if field == "tags" and value is not None:
             # Handle tags conversion to JSON string for storage
@@ -167,7 +167,7 @@ def update_task(
     db.refresh(db_task)
 
     # Convert to TaskRead format for response
-    task_dict = db_task.dict()
+    task_dict = db_task.model_dump()
     task_dict["tags"] = db_task.tags_list
     # Priority is already a string
     task_dict["priority"] = db_task.priority

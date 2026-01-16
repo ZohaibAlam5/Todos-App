@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import TodoList from '@/components/TodoList';
+import ChatPanel from '@/components/ChatPanel';
 import { useAuth } from '@/components/AuthContext';
 import ThemeToggle from '@/components/ThemeToggle';
 import { useRouter } from 'next/navigation';
@@ -15,6 +16,12 @@ export default function DashboardPage() {
   // NEW: State to toggle full email view on mobile
   const [isEmailExpanded, setIsEmailExpanded] = useState(false);
   const [showAuthMessage, setShowAuthMessage] = useState(false);
+  const [taskRefreshKey, setTaskRefreshKey] = useState(0);
+
+  // Callback to refresh task list when tasks are modified via chat
+  const handleTaskUpdate = useCallback(() => {
+    setTaskRefreshKey((prev) => prev + 1);
+  }, []);
 
   // Check authentication status on component mount
   useEffect(() => {
@@ -160,7 +167,7 @@ export default function DashboardPage() {
                 
                 {/* Main Card Content */}
                 <div className="relative bg-white/60 dark:bg-gray-900/60 backdrop-blur-2xl rounded-4xl sm:rounded-[2.5rem] border border-white/40 dark:border-gray-800/50 p-4 sm:p-8 min-h-125 sm:min-h-150">
-                    <TodoList />
+                    <TodoList key={taskRefreshKey} />
                 </div>
             </div>
         </div>
@@ -174,6 +181,9 @@ export default function DashboardPage() {
           </p>
         </div>
       </footer>
+
+      {/* --- AI Chat Panel --- */}
+      <ChatPanel onTaskUpdate={handleTaskUpdate} />
     </div>
   );
 }

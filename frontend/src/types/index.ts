@@ -45,3 +45,42 @@ export interface ApiResponse<T> {
   error?: string;
   success: boolean;
 }
+
+// Chat types for AI Chatbot feature
+
+export type MessageRole = 'user' | 'assistant';
+
+export interface ToolCallInfo {
+  tool_name: string;
+  arguments: Record<string, unknown>;
+  result?: unknown;
+}
+
+export interface Message {
+  id: number;
+  conversation_id: string;
+  role: MessageRole;
+  content: string;
+  tool_calls?: ToolCallInfo[];
+  created_at: string;
+}
+
+export interface Conversation {
+  id: string;
+  user_id: string;
+  title?: string;
+  created_at: string;
+  updated_at: string;
+  messages?: Message[];
+}
+
+export interface ChatRequest {
+  message: string;
+  conversation_id?: string;
+}
+
+export interface ChatResponse {
+  conversation_id: string;
+  message: Message;
+  tool_calls?: ToolCallInfo[];
+}

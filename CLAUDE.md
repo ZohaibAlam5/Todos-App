@@ -214,6 +214,8 @@ See `.specify/memory/constitution.md` for code quality, testing, performance, se
 - In-memory only (no persistence beyond runtime as specified in requirements) (001-console-todo-app)
 - Python 3.11 (backend), TypeScript (frontend) + FastAPI, SQLModel, Next.js, Tailwind CSS, Better Auth (001-web-todo-app)
 - PostgreSQL database with Neon Serverless (001-web-todo-app)
+- Python 3.11 (backend), TypeScript 5.x (frontend) (002-embedded-ai-chatbot)
+- PostgreSQL (Neon Serverless) - existing + new Conversation/Message tables (002-embedded-ai-chatbot)
 
 ## Recent Changes
 - 001-console-todo-app: Added Python 3.11 (based on constitution development stack requirement) + Built-in Python libraries for CLI interface, no external dependencies initially
