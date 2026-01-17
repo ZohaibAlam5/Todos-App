@@ -167,7 +167,7 @@ export default function DashboardPage() {
                 
                 {/* Main Card Content */}
                 <div className="relative bg-white/60 dark:bg-gray-900/60 backdrop-blur-2xl rounded-4xl sm:rounded-[2.5rem] border border-white/40 dark:border-gray-800/50 p-4 sm:p-8 min-h-125 sm:min-h-150">
-                    <TodoList key={taskRefreshKey} />
+                    <TodoList refreshTrigger={taskRefreshKey} />
                 </div>
             </div>
         </div>

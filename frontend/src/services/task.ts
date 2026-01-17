@@ -4,6 +4,27 @@ import { Task, TaskCreateRequest, TaskUpdateRequest, ApiResponse } from '@/types
 class TaskService {
   private baseUrl: string = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
+  // Normalize priority from backend (uppercase) to frontend format (title case)
+  private normalizePriority(priority: string): 'High' | 'Medium' | 'Low' {
+    const priorityMap: Record<string, 'High' | 'Medium' | 'Low'> = {
+      'HIGH': 'High',
+      'MEDIUM': 'Medium',
+      'LOW': 'Low',
+      'High': 'High',
+      'Medium': 'Medium',
+      'Low': 'Low'
+    };
+    return priorityMap[priority] || 'Medium';
+  }
+
+  // Transform task to normalize priority
+  private normalizeTask(task: Task): Task {
+    return {
+      ...task,
+      priority: this.normalizePriority(task.priority)
+    };
+  }
+
   private getAuthHeaders(): HeadersInit {
     const token = localStorage.getItem('token');
     console.log('Token retrieved from localStorage:', token); // Debug log
@@ -34,7 +55,9 @@ class TaskService {
       }
 
       const tasks = await response.json();
-      return { data: tasks, success: true };
+      // Normalize priorities for all tasks
+      const normalizedTasks = tasks.map((task: Task) => this.normalizeTask(task));
+      return { data: normalizedTasks, success: true };
     } catch (error) {
       console.error('Error fetching tasks:', error);
       return { error: error instanceof Error ? error.message : 'Unknown error', success: false };
@@ -55,7 +78,7 @@ class TaskService {
       }
 
       const task = await response.json();
-      return { data: task, success: true };
+      return { data: this.normalizeTask(task), success: true };
     } catch (error) {
       return { error: error instanceof Error ? error.message : 'Unknown error', success: false };
     }
@@ -75,7 +98,7 @@ class TaskService {
       }
 
       const task = await response.json();
-      return { data: task, success: true };
+      return { data: this.normalizeTask(task), success: true };
     } catch (error) {
       return { error: error instanceof Error ? error.message : 'Unknown error', success: false };
     }
@@ -131,7 +154,7 @@ class TaskService {
       }
 
       const task = await response.json();
-      return { data: task, success: true };
+      return { data: this.normalizeTask(task), success: true };
     } catch (error) {
       return { error: error instanceof Error ? error.message : 'Unknown error', success: false };
     }

@@ -100,9 +100,10 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({ value, onChange, option
 
 interface TodoListProps {
   onTaskUpdated?: () => void;
+  refreshTrigger?: number;
 }
 
-const TodoList: React.FC<TodoListProps> = ({ onTaskUpdated }) => {
+const TodoList: React.FC<TodoListProps> = ({ onTaskUpdated, refreshTrigger }) => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -140,6 +141,13 @@ const TodoList: React.FC<TodoListProps> = ({ onTaskUpdated }) => {
     setMounted(true);
     fetchTasks();
   }, [user]);
+
+  // Refetch tasks when refreshTrigger changes (triggered by chatbot actions)
+  useEffect(() => {
+    if (refreshTrigger !== undefined && refreshTrigger > 0) {
+      fetchTasks();
+    }
+  }, [refreshTrigger]);
 
   useEffect(() => {
     if (onTaskUpdated) onTaskUpdated();
