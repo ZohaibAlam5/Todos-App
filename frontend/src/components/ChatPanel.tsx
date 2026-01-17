@@ -114,10 +114,10 @@ export default function ChatPanel({ onTaskUpdate }: ChatPanelProps) {
         const assistantMessage: Message = { ...chatResponse.message, tool_calls: chatResponse.tool_calls };
         setMessages(prev => [...prev, assistantMessage]);
 
-        if (chatResponse.tool_calls && chatResponse.tool_calls.length > 0) {
-           onTaskUpdate?.();
-        }
-        
+        // Always refresh task list after chat response - the chatbot may have created/modified/deleted tasks
+        // This is more reliable than checking tool_calls which may not always be populated correctly
+        onTaskUpdate?.();
+
         if (!conversationId) loadConversations();
       } else {
         setMessages(prev => prev.filter(msg => msg.id !== tempUserMessage.id));
