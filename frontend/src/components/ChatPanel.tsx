@@ -261,7 +261,7 @@ export default function ChatPanel({ onTaskUpdate }: ChatPanelProps) {
                                     </button>
                                     <button
                                         onClick={(e) => handleDeleteClick(e, conv.id)}
-                                        className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 opacity-100 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100 transition-all"
+                                        className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all"
                                         title="Delete conversation"
                                     >
                                         <Trash2 className="w-4 h-4" />
