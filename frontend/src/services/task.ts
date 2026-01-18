@@ -38,12 +38,15 @@ class TaskService {
     };
   }
 
-  // Transform request data to use backend priority format
-  private toBackendTaskData(taskData: TaskCreateRequest | TaskUpdateRequest): TaskCreateRequest | TaskUpdateRequest {
+  // Transform request data to use backend format (uppercase priority, no tags)
+  private toBackendTaskData(taskData: TaskCreateRequest | TaskUpdateRequest): Record<string, unknown> {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { tags, ...dataWithoutTags } = taskData as TaskCreateRequest & { tags?: string[] };
+    const result: Record<string, unknown> = { ...dataWithoutTags };
     if (taskData.priority) {
-      return { ...taskData, priority: this.toBackendPriority(taskData.priority) as 'High' | 'Medium' | 'Low' };
+      result.priority = this.toBackendPriority(taskData.priority);
     }
-    return taskData;
+    return result;
   }
 
   private getAuthHeaders(): HeadersInit {
