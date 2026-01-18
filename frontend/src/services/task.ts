@@ -17,12 +17,33 @@ class TaskService {
     return priorityMap[priority] || 'Medium';
   }
 
+  // Convert priority from frontend format (title case) to backend format (uppercase)
+  private toBackendPriority(priority: string): string {
+    const priorityMap: Record<string, string> = {
+      'High': 'HIGH',
+      'Medium': 'MEDIUM',
+      'Low': 'LOW',
+      'HIGH': 'HIGH',
+      'MEDIUM': 'MEDIUM',
+      'LOW': 'LOW'
+    };
+    return priorityMap[priority] || 'MEDIUM';
+  }
+
   // Transform task to normalize priority
   private normalizeTask(task: Task): Task {
     return {
       ...task,
       priority: this.normalizePriority(task.priority)
     };
+  }
+
+  // Transform request data to use backend priority format
+  private toBackendTaskData(taskData: TaskCreateRequest | TaskUpdateRequest): TaskCreateRequest | TaskUpdateRequest {
+    if (taskData.priority) {
+      return { ...taskData, priority: this.toBackendPriority(taskData.priority) as 'High' | 'Medium' | 'Low' };
+    }
+    return taskData;
   }
 
   private getAuthHeaders(): HeadersInit {
@@ -66,10 +87,11 @@ class TaskService {
 
   async createTask(taskData: TaskCreateRequest): Promise<ApiResponse<Task>> {
     try {
+      const backendData = this.toBackendTaskData(taskData);
       const response = await fetch(`${this.baseUrl}/tasks`, {
         method: 'POST',
         headers: this.getAuthHeaders(),
-        body: JSON.stringify(taskData),
+        body: JSON.stringify(backendData),
       });
 
       if (!response.ok) {
@@ -86,10 +108,11 @@ class TaskService {
 
   async updateTask(id: number, taskData: TaskUpdateRequest): Promise<ApiResponse<Task>> {
     try {
+      const backendData = this.toBackendTaskData(taskData);
       const response = await fetch(`${this.baseUrl}/tasks/${id}`, {
         method: 'PUT',
         headers: this.getAuthHeaders(),
-        body: JSON.stringify(taskData),
+        body: JSON.stringify(backendData),
       });
 
       if (!response.ok) {
