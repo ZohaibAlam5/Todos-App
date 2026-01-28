@@ -1,0 +1,55 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: taskflow-development
+
+# Reference base resources
+resources:
+  - ../../base
+
+# Development-specific namespace
+namespace: taskflow-dev
+
+# Common labels for development environment
+labels:
+  - pairs:
+      environment: development
+
+# Development-specific patches
+patches:
+  # Reduce replicas for development
+  - target:
+      kind: Deployment
+      name: taskflow-frontend
+    patch: |
+      - op: replace
+        path: /spec/replicas
+        value: 1
+  - target:
+      kind: Deployment
+      name: taskflow-backend
+    patch: |
+      - op: replace
+        path: /spec/replicas
+        value: 1
+
+# Image configuration - use development tags
+images:
+  - name: ghcr.io/OWNER/taskflow-frontend
+    newTag: latest
+  - name: ghcr.io/OWNER/taskflow-backend
+    newTag: latest
+  - name: ghcr.io/OWNER/taskflow-mcp-server
+    newTag: latest
+
+# ConfigMap generator for development environment
+configMapGenerator:
+  - name: taskflow-config
+    literals:
+      - ENVIRONMENT=development
+      - LOG_LEVEL=DEBUG
+      - API_URL=http://taskflow-backend:8000
+      - FRONTEND_URL=http://taskflow-frontend
+      - CORS_ORIGINS=*
+      - MCP_PORT=8001

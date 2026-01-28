@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: taskflow-backend
+  labels:
+    app: taskflow
+    component: backend
+spec:
+  type: ClusterIP
+  selector:
+    app: taskflow
+    component: backend
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8000
+      protocol: TCP

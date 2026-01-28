@@ -1,3 +1,11 @@
+# Node.js / Next.js
+node_modules/
+.next/
+out/
+.turbo/
+*.tsbuildinfo
+next-env.d.ts
+
 # Python
 __pycache__/
 *.py[cod]
@@ -45,3 +53,13 @@ Thumbs.db
 .project
 .pydevproject
 .metadata
+
+# Environment files (secrets)
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Kubernetes secrets
+k8s/overlays/*/secrets.yaml
+!k8s/overlays/*/secrets.yaml.template

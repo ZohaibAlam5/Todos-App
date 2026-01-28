@@ -1,0 +1,80 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: taskflow-production
+
+# Reference base resources
+resources:
+  - ../../base
+  - configmap.yaml
+  # Note: secrets.yaml should be created from secrets.yaml.template
+  # and applied separately or managed via external secrets management
+
+# Production-specific namespace
+namespace: taskflow-prod
+
+# Common labels for production environment
+labels:
+  - pairs:
+      environment: production
+
+# Production-specific patches
+patches:
+  # Use production replicas
+  - target:
+      kind: Deployment
+      name: taskflow-frontend
+    patch: |
+      - op: replace
+        path: /spec/replicas
+        value: 2
+  - target:
+      kind: Deployment
+      name: taskflow-backend
+    patch: |
+      - op: replace
+        path: /spec/replicas
+        value: 2
+
+  # Add envFrom for ConfigMap and Secret references
+  - target:
+      kind: Deployment
+      name: taskflow-frontend
+    patch: |
+      - op: add
+        path: /spec/template/spec/containers/0/envFrom
+        value:
+          - configMapRef:
+              name: taskflow-config
+  - target:
+      kind: Deployment
+      name: taskflow-backend
+    patch: |
+      - op: add
+        path: /spec/template/spec/containers/0/envFrom
+        value:
+          - configMapRef:
+              name: taskflow-config
+          - secretRef:
+              name: taskflow-secrets
+  - target:
+      kind: Deployment
+      name: taskflow-mcp-server
+    patch: |
+      - op: add
+        path: /spec/template/spec/containers/0/envFrom
+        value:
+          - configMapRef:
+              name: taskflow-config
+          - secretRef:
+              name: taskflow-secrets
+
+# Image configuration - use specific SHA tags in production
+images:
+  - name: ghcr.io/OWNER/taskflow-frontend
+    newTag: sha-COMMIT_SHA
+  - name: ghcr.io/OWNER/taskflow-backend
+    newTag: sha-COMMIT_SHA
+  - name: ghcr.io/OWNER/taskflow-mcp-server
+    newTag: sha-COMMIT_SHA

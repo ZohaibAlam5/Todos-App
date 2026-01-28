@@ -216,6 +216,11 @@ See `.specify/memory/constitution.md` for code quality, testing, performance, se
 - PostgreSQL database with Neon Serverless (001-web-todo-app)
 - Python 3.11 (backend), TypeScript 5.x (frontend) (002-embedded-ai-chatbot)
 - PostgreSQL (Neon Serverless) - existing + new Conversation/Message tables (002-embedded-ai-chatbot)
+- Docker + multi-stage Dockerfiles for containerization (003-cloud-deployment-k8s)
+- Kubernetes + Kustomize for orchestration (003-cloud-deployment-k8s)
+- GitHub Container Registry (ghcr.io) for image storage (003-cloud-deployment-k8s)
+- GitHub Actions for CI/CD pipeline (003-cloud-deployment-k8s)
+- kind for local Kubernetes development (003-cloud-deployment-k8s)
 
 ## Recent Changes
-- 001-console-todo-app: Added Python 3.11 (based on constitution development stack requirement) + Built-in Python libraries for CLI interface, no external dependencies initially
+- 003-cloud-deployment-k8s: Added Docker, Kubernetes, Kustomize, GitHub Actions, GitHub Container Registry, kind for cloud deployment

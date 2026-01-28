@@ -1,0 +1,53 @@
+# TaskFlow Docker Compose Override - Development Configuration
+# This file is automatically loaded with docker-compose.yml
+# It provides volume mounts for hot-reload during development
+
+services:
+  # ==========================================================================
+  # Frontend Service - Hot-reload development
+  # ==========================================================================
+  frontend:
+    volumes:
+      # Mount source code for hot-reload
+      - ./frontend/src:/app/src:ro
+      - ./frontend/public:/app/public:ro
+      # Mount config files
+      - ./frontend/next.config.js:/app/next.config.js:ro
+      - ./frontend/tailwind.config.js:/app/tailwind.config.js:ro
+      - ./frontend/postcss.config.js:/app/postcss.config.js:ro
+      - ./frontend/tsconfig.json:/app/tsconfig.json:ro
+      # Persist node_modules to avoid rebuilding
+      - frontend-node-modules:/app/node_modules
+      # Persist Next.js cache
+      - frontend-next-cache:/app/.next
+    environment:
+      # Enable Next.js fast refresh
+      - WATCHPACK_POLLING=true
+
+  # ==========================================================================
+  # Backend Service - Hot-reload development
+  # ==========================================================================
+  backend:
+    volumes:
+      # Mount source code for hot-reload (rw needed for __pycache__)
+      - ./backend/TaskFlow-App:/app
+    environment:
+      # Enable uvicorn reload watching
+      - PYTHONDONTWRITEBYTECODE=1
+
+  # ==========================================================================
+  # MCP Server Service - Hot-reload development
+  # ==========================================================================
+  mcp-server:
+    volumes:
+      # Mount source code for hot-reload (rw needed for __pycache__)
+      - ./mcp-server:/app
+
+# =============================================================================
+# Named Volumes for persistence
+# =============================================================================
+volumes:
+  frontend-node-modules:
+    name: taskflow-frontend-node-modules
+  frontend-next-cache:
+    name: taskflow-frontend-next-cache

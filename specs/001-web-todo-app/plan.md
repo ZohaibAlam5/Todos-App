@@ -7,40 +7,31 @@
 
 ## Summary
 
-Transform the Phase 1 console Todo app into a full-stack web application with multi-user support, authentication, and persistent storage. The system will use a Next.js frontend with TypeScript and Tailwind CSS, and a Python FastAPI backend with SQLModel and PostgreSQL. All Phase 1 features (add, view, update, delete, complete/incomplete tasks, priority management, tags, search, filter, sort) will be preserved and enhanced with web-based UI and multi-user capabilities. Authentication will be handled via Better Auth with JWT tokens for API security.
+[Extract from feature spec: primary requirement + technical approach from research]
 
 ## Technical Context
 
-**Language/Version**: Python 3.11 (backend), TypeScript (frontend)
-**Primary Dependencies**: FastAPI, SQLModel, Next.js, Tailwind CSS, Better Auth
-**Storage**: PostgreSQL database with Neon Serverless
-**Testing**: pytest (backend), Jest/React Testing Library (frontend)
-**Target Platform**: Web application (responsive) accessible via browsers on desktop and mobile
-**Project Type**: Web (frontend + backend)
-**Performance Goals**: Page load under 2 seconds, API response under 500ms, support up to 1000 concurrent users
-**Constraints**: JWT authentication required for all API requests, data isolation between users, persistent storage required
-**Scale/Scope**: Multi-user system with individual task lists, responsive web interface
+<!--
+  ACTION REQUIRED: Replace the content in this section with the technical details
+  for the project. The structure here is presented in advisory capacity to guide
+  the iteration process.
+-->
+
+**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
+**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
+**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
+**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
+**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
+**Project Type**: [single/web/mobile - determines source structure]  
+**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
+**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
+**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-1. **Spec-Driven Authority**: ✅ All behavior, architecture, APIs, and data models originate from specifications
-2. **Spec-First Development**: ✅ Specifications written before implementation
-3. **Determinism & Reproducibility**: ✅ System will be reproducible from specs
-4. **Progressive Evolution**: ✅ Building on Phase 1 console app functionality
-5. **Constitutional Compliance**: ✅ All implementations will comply with constitution
-6. **Traceability**: ✅ Every feature maps to written specification
-7. **Error Handling Standards**: ✅ Errors will be explicit and descriptive
-8. **Security & Isolation**: ✅ User data isolation enforced (user_id foreign key), authentication required (JWT)
-9. **Development Stack**: ✅ Using approved technologies (FastAPI, Next.js, SQLModel, PostgreSQL)
-10. **Forbidden Actions**: ✅ No violations planned (no hardcoded secrets, no auth bypass)
-
-**Post-Design Verification**:
-- API contracts align with spec requirements
-- Data model includes all required fields from spec
-- Authentication and authorization enforced at API layer
-- User isolation implemented via user_id foreign key relationships
+[Gates determined based on constitution file]
 
 ## Project Structure
 
@@ -57,55 +48,51 @@ specs/[###-feature]/
 ```
 
 ### Source Code (repository root)
+<!--
+  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
+  for this feature. Delete unused options and expand the chosen structure with
+  real paths (e.g., apps/admin, packages/something). The delivered plan must
+  not include Option labels.
+-->
 
 ```text
+# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
+src/
+├── models/
+├── services/
+├── cli/
+└── lib/
+
+tests/
+├── contract/
+├── integration/
+└── unit/
+
+# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
 backend/
 ├── src/
 │   ├── models/
-│   │   ├── user.py
-│   │   └── task.py
 │   ├── services/
-│   │   ├── auth_service.py
-│   │   ├── task_service.py
-│   │   └── user_service.py
-│   ├── api/
-│   │   ├── auth_routes.py
-│   │   ├── task_routes.py
-│   │   └── user_routes.py
-│   ├── database/
-│   │   └── database.py
-│   └── main.py
+│   └── api/
 └── tests/
-    ├── unit/
-    ├── integration/
-    └── contract/
 
 frontend/
 ├── src/
 │   ├── components/
-│   │   ├── TaskList.tsx
-│   │   ├── TaskForm.tsx
-│   │   ├── AuthForm.tsx
-│   │   └── Navigation.tsx
 │   ├── pages/
-│   │   ├── index.tsx
-│   │   ├── login.tsx
-│   │   ├── register.tsx
-│   │   └── dashboard.tsx
-│   ├── services/
-│   │   ├── api.ts
-│   │   └── auth.ts
-│   ├── types/
-│   │   └── index.ts
-│   └── styles/
-│       └── globals.css
-├── public/
+│   └── services/
 └── tests/
-    ├── unit/
-    └── integration/
+
+# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
+api/
+└── [same as backend above]
+
+ios/ or android/
+└── [platform-specific structure: feature modules, UI flows, platform tests]
 ```
 
-**Structure Decision**: Web application structure with separate frontend (Next.js) and backend (FastAPI) components. This allows for proper separation of concerns with dedicated authentication, API services, and UI components.
+**Structure Decision**: [Document the selected structure and reference the real
+directories captured above]
 
 ## Complexity Tracking
 
