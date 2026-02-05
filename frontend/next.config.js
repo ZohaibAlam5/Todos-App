@@ -2,7 +2,7 @@
 const nextConfig = {
   // Enable standalone output for Docker production builds
   // This creates a self-contained deployment that doesn't need node_modules
-  output: process.env.NODE_ENV === 'production' ? 'standalone' : undefined,
+  output:"standalone",
 
   images: {
     unoptimized: true,

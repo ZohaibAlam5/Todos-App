@@ -1,101 +1,70 @@
-# TaskFlow Frontend Dockerfile
-# Multi-stage build with development and production targets
+# syntax=docker.io/docker/dockerfile:1
 
 # =============================================================================
-# BASE STAGE - Common dependencies
+# BASE STAGE
 # =============================================================================
-FROM node:20-alpine AS base
-
-# Install dependencies only when needed
-RUN apk add --no-cache libc6-compat
+FROM node:20-slim AS base
 
 WORKDIR /app
+ENV NEXT_TELEMETRY_DISABLED=1
 
 # =============================================================================
-# DEPENDENCIES STAGE - Install node_modules
+# DEPENDENCIES STAGE
 # =============================================================================
 FROM base AS deps
 
-# Copy package files
 COPY frontend/package.json frontend/package-lock.json* ./
-
-# Install dependencies
 RUN npm ci
 
 # =============================================================================
-# DEVELOPMENT STAGE - For local development with hot-reload
+# DEVELOPMENT STAGE
 # =============================================================================
 FROM base AS development
 
-WORKDIR /app
+ENV NODE_ENV=development
 
-# Copy node_modules from deps stage
 COPY --from=deps /app/node_modules ./node_modules
-
-# Copy source files (will be overridden by volume mount in docker-compose)
 COPY frontend/ .
 
-# Set development environment
-ENV NODE_ENV=development
-ENV NEXT_TELEMETRY_DISABLED=1
-
-# Expose port
 EXPOSE 3000
 
-# Start development server with hot-reload
+# IMPORTANT: Turbopack disabled
 CMD ["npm", "run", "dev"]
 
 # =============================================================================
-# BUILDER STAGE - Build the production application
+# BUILDER STAGE
 # =============================================================================
 FROM base AS builder
 
-WORKDIR /app
+ENV NODE_ENV=production
 
-# Copy node_modules from deps stage
 COPY --from=deps /app/node_modules ./node_modules
-
-# Copy source files
 COPY frontend/ .
 
-# Set production environment for build
-ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
-
-# Build the application with standalone output
 RUN npm run build
 
 # =============================================================================
-# PRODUCTION STAGE - Minimal runtime image
+# PRODUCTION STAGE
 # =============================================================================
-FROM node:20-alpine AS production
+FROM node:20-slim AS production
 
 WORKDIR /app
-
-# Don't run as root
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-# Set production environment
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV PORT=3000
-ENV HOSTNAME="0.0.0.0"
 
-# Copy the standalone build
+# Security: non-root user
+RUN addgroup --system --gid 1001 nodejs \
+ && adduser --system --uid 1001 nextjs
+
+# Copy standalone output
 COPY --from=builder /app/public ./public
-
-# Set the correct permissions for prerender cache
-RUN mkdir .next
-RUN chown nextjs:nodejs .next
-
-# Copy standalone output (if available) or full build
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
 
 EXPOSE 3000
+ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
 
-# Start the production server
 CMD ["node", "server.js"]
